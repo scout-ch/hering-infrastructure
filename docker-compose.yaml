@@ -2,11 +2,12 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "80:80"
+      - "8080:80"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.pbs-hering.rule=Host(`${DOMAIN:?}`)"
       - "traefik.http.routers.pbs-hering.entrypoints=https"
+      - "traefik.http.services.pbs-hering.loadbalancer.server.port=8080"
     networks:
       - default
       - reverse-proxy
