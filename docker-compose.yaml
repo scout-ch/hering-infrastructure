@@ -3,3 +3,7 @@ services:
     image: nginx:latest
     ports:
       - "8080:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pbs-hering.rule=Host(`${DOMAIN:?}`)"
+      - "traefik.http.routers.pbs-hering.entrypoints=https"
