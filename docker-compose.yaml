@@ -3,7 +3,7 @@ services:
     image: nginx:latest
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pbs-hering.rule=Host('hering-dev.tractor.scout.ch')"
+      - "traefik.http.routers.pbs-hering.rule=Host(`hering-dev.tractor.scout.ch`)"
       - "traefik.http.routers.pbs-hering.entrypoints=https"
       - "traefik.http.services.pbs-hering.loadbalancer.server.port=80"
     networks:
