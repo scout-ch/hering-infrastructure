@@ -2,6 +2,8 @@ services:
   api:
     image: ghcr.io/scout-ch/hering-api:2.0.0-beta-2
     restart: unless-stopped
+    env_file:
+      - stack.env
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.pbs-hering.rule=Host(`hering-api-dev.tractor.scout.ch`)"
