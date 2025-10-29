@@ -1,0 +1,33 @@
+services:
+  api:
+    image: ghcr.io/scout-ch/hering-api:2.0.6
+    restart: unless-stopped
+    env_file:
+      - stack.env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pbs-hering-api.rule=Host(`hering-api-staging.tractor.scout.ch`)"
+      - "traefik.http.routers.pbs-hering-api.entrypoints=https"
+      - "traefik.http.services.pbs-hering-api.loadbalancer.server.port=1337"
+    networks:
+      - default
+      - reverse-proxy
+
+  frontend:
+    image: ghcr.io/scout-ch/hering:3.1.1
+    restart: unless-stopped
+    environment:
+      HERING_API_BASE_URL: https://hering-api-staging.tractor.scout.ch/api
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pbs-hering.rule=Host(`hering-staging.tractor.scout.ch`)"
+      - "traefik.http.routers.pbs-hering.entrypoints=https"
+      - "traefik.http.services.pbs-hering.loadbalancer.server.port=8080"
+    networks:
+      - reverse-proxy
+    depends_on:
+      - api
+
+networks:
+  reverse-proxy:
+    external: true
