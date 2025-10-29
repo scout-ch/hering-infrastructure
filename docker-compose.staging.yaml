@@ -6,9 +6,9 @@ services:
       - stack.env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pbs-hering-api.rule=Host(`hering-api-staging.tractor.scout.ch`)"
-      - "traefik.http.routers.pbs-hering-api.entrypoints=https"
-      - "traefik.http.services.pbs-hering-api.loadbalancer.server.port=1337"
+      - "traefik.http.routers.pbs-hering-staging-api.rule=Host(`hering-api-staging.tractor.scout.ch`)"
+      - "traefik.http.routers.pbs-hering-staging-api.entrypoints=https"
+      - "traefik.http.services.pbs-hering-staging-api.loadbalancer.server.port=1337"
     networks:
       - default
       - reverse-proxy
@@ -20,9 +20,9 @@ services:
       HERING_API_BASE_URL: https://hering-api-staging.tractor.scout.ch/api
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pbs-hering.rule=Host(`hering-staging.tractor.scout.ch`)"
-      - "traefik.http.routers.pbs-hering.entrypoints=https"
-      - "traefik.http.services.pbs-hering.loadbalancer.server.port=8080"
+      - "traefik.http.routers.pbs-hering-staging.rule=Host(`hering-staging.tractor.scout.ch`)"
+      - "traefik.http.routers.pbs-hering-staging.entrypoints=https"
+      - "traefik.http.services.pbs-hering-staging.loadbalancer.server.port=8080"
     networks:
       - reverse-proxy
     depends_on:
