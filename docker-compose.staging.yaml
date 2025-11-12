@@ -1,6 +1,6 @@
 services:
   api:
-    image: ghcr.io/scout-ch/hering-api:2.1.0
+    image: ghcr.io/scout-ch/hering-api:2.1.1
     restart: unless-stopped
     env_file:
       - stack.env
@@ -14,7 +14,7 @@ services:
       - reverse-proxy
 
   frontend:
-    image: ghcr.io/scout-ch/hering:3.2.0
+    image: ghcr.io/scout-ch/hering:3.2.1
     restart: unless-stopped
     environment:
       HERING_API_BASE_URL: https://hering-api-staging.tractor.scout.ch/api
