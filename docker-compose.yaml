@@ -20,7 +20,7 @@ services:
       HERING_API_BASE_URL: https://hering-api.tractor.scout.ch/api
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pbs-hering.rule=Host(`hering-dev.tractor.scout.ch`)"
+      - "traefik.http.routers.pbs-hering.rule=Host(`hering.scout.ch`)"
       - "traefik.http.routers.pbs-hering.entrypoints=https"
       - "traefik.http.services.pbs-hering.loadbalancer.server.port=8080"
     networks:
