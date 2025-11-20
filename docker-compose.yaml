@@ -14,7 +14,7 @@ services:
       - reverse-proxy
 
   frontend:
-    image: ghcr.io/scout-ch/hering:3.2.2
+    image: ghcr.io/scout-ch/hering:3.2.3
     restart: unless-stopped
     environment:
       HERING_API_BASE_URL: https://hering-api.tractor.scout.ch/api
