@@ -1,6 +1,6 @@
 services:
   api:
-    image: ghcr.io/scout-ch/hering-api:2.1.1
+    image: ghcr.io/scout-ch/hering-api:2.1.2
     restart: unless-stopped
     env_file:
       - stack.env
